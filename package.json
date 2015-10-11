@@ -1,0 +1,25 @@
+{
+  "name": "generator-function",
+  "version": "1.0.0",
+  "description": "Expose the GeneratorFunction constructor if supported by the runtime",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timothygu/generator-function.git"
+  },
+  "keywords": [
+    "generators"
+  ],
+  "author": "Timothy Gu <timothygu99@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timothygu/generator-function/issues"
+  },
+  "homepage": "https://github.com/timothygu/generator-function#readme",
+  "devDependencies": {
+    "testit": "^2.0.2"
+  }
+}
