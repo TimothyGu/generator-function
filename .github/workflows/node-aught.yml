@@ -1,0 +1,13 @@
+name: 'Tests: node.js < 10'
+
+on: [pull_request, push]
+
+jobs:
+  tests:
+    uses: ljharb/actions/.github/workflows/node.yml@main
+    with:
+      range: '< 10'
+      notable: '1.0' # io.js v1 introduced AsyncFunction
+      type: minors
+      command: npm run tests-only
+      skip-ls-check: true

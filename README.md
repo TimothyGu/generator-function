@@ -1,54 +1,51 @@
-# generator-function
+# generator-function <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 
-Expose the ES2015 `GeneratorFunction` constructor.
+[![github actions][actions-image]][actions-url]
+[![coverage][codecov-image]][codecov-url]
+[![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
 
-[![Build Status](https://img.shields.io/travis/TimothyGu/generator-function/master.svg)](https://travis-ci.org/TimothyGu/generator-function)
-[![Dependency Status](https://img.shields.io/david/TimothyGu/generator-function.svg)](https://david-dm.org/TimothyGu/generator-function)
-[![devDependency Status](https://img.shields.io/david/dev/TimothyGu/generator-function.svg)](https://david-dm.org/TimothyGu/generator-function#info=devDependencies)
-[![npm version](https://img.shields.io/npm/v/generator-function.svg)](https://www.npmjs.org/package/generator-function)
+[![npm badge][npm-badge-png]][package-url]
 
-## Installation
+A function that returns the normally hidden `GeneratorFunction` constructor, when available.
 
-    npm install generator-function
+## Getting started
 
-## Description
-
-Like `Function`s, one could create generator functions from a JavaScript string
-through a special constructor called `GeneratorFunction`. However, the
-constructor function is [not available as a global][mdn], so one has to use the
-`constructor` property of an existing generator function.
-
-This module makes it easy to do so, and falls back gracefully when a runtime
-not supporting generator functions is encountered.
-
-[mdn]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction#Summary
-
-
-## Usage
-
-On a platform supporting generator functions:
-
-```js
-var GeneratorFunction = require('generator-function')
-
-var generatorFunction = new GeneratorFunction('arg1', 'yield arg1')
-var generator = generatorFunction(1)
-
-generator.next()
-//=> { value: 1, done: false }
-generator.next()
-//=> { value: undefined, done: true }
+```sh
+npm install --save generator-function
 ```
 
-On a runtime that does not support them:
+## Usage/Examples
 
 ```js
-var GeneratorFunction = require('generator-function')
+const assert = require('assert');
+const GeneratorFunction = require('generator-function')();
 
-GeneratorFunction
-// => undefined
+const fn = new GeneratorFunction('return 1');
+
+assert.equal(fn.toString(), 'function* anonymous(\n) {\nreturn 1\n}');
+
+const iterator = fn();
+
+assert.deepEqual(iterator.next(), { done: true, value: 1 });
 ```
 
-## License
+## Tests
 
-MIT
+Clone the repo, `npm install`, and run `npm test`
+
+[package-url]: https://npmjs.org/package/generator-function
+[npm-version-svg]: https://versionbadg.es/ljharb/generator-function.svg
+[deps-svg]: https://david-dm.org/ljharb/generator-function.svg
+[deps-url]: https://david-dm.org/ljharb/generator-function
+[dev-deps-svg]: https://david-dm.org/ljharb/generator-function/dev-status.svg
+[dev-deps-url]: https://david-dm.org/ljharb/generator-function#info=devDependencies
+[npm-badge-png]: https://nodei.co/npm/generator-function.png?downloads=true&stars=true
+[license-image]: https://img.shields.io/npm/l/generator-function.svg
+[license-url]: LICENSE
+[downloads-image]: https://img.shields.io/npm/dm/generator-function.svg
+[downloads-url]: https://npm-stat.com/charts.html?package=generator-function
+[codecov-image]: https://codecov.io/gh/ljharb/generator-function/branch/main/graphs/badge.svg
+[codecov-url]: https://app.codecov.io/gh/ljharb/generator-function/
+[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/ljharb/generator-function
+[actions-url]: https://github.com/ljharb/generator-function/actions
