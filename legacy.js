@@ -3,7 +3,7 @@
 /** @type {GeneratorFunctionConstructor | false} */
 var cached;
 
-/** @type {import('./index.js')} */
+/** @type {typeof import('./index.js')} */
 module.exports = function getGeneratorFunction() {
 	if (typeof cached === 'undefined') {
 		try {
