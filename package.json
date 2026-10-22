@@ -40,7 +40,7 @@
 		"function",
 		"native"
 	],
-	"author": "Jordan Harbamd <ljharb@gmail.com>",
+	"author": "Jordan Harband <ljharb@gmail.com>",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/TimothyGu/generator-function/issues"
